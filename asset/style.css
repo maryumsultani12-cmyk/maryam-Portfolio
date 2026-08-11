@@ -1,4 +1,4 @@
-  :root {
+:root {
       --ink: #101820;
       --paper: #F6F3EC;
       --paper-dim: #EAE5D8;
@@ -42,18 +42,7 @@
       color: var(--paper);
   }
 
-  @media (prefers-reduced-motion: no-preference) {
-      .reveal {
-          opacity: 0;
-          transform: translateY(18px);
-          transition: opacity .7s ease, transform .7s ease;
-      }
-
-      .reveal.in {
-          opacity: 1;
-          transform: translateY(0);
-      }
-  }
+  
 
   /* NAV */
   header {
@@ -125,6 +114,34 @@
   .hero {
       padding: 120px 0 100px;
       position: relative;
+  }
+
+  .hero-split {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 48px;
+      align-items: center;
+  }
+
+  .hero-split-media {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--paper-dim);
+  }
+
+  .hero-split-media video {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 480px;
+      object-fit: contain;
+  }
+
+  @media (max-width: 900px) {
+      .hero-split {
+          grid-template-columns: 1fr;
+      }
   }
 
   .eyebrow {
@@ -409,6 +426,26 @@
       padding-left: 10px;
   }
 
+  .project-thumb {
+     margin-top: -60px;
+      border-radius: 8px;
+      overflow: hidden;
+      
+      max-width: 450px;
+  }
+
+  .project-img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: contain;
+      transition: transform .4s ease;
+  }
+
+  .project:hover .project-img {
+      transform: scale(1.03);
+  }
+
   .project .num {
       font-family: 'JetBrains Mono', monospace;
       color: var(--brass);
@@ -420,7 +457,7 @@
       font-family: 'Newsreader', serif;
       font-size: 26px;
       font-weight: 500;
-      margin-bottom: 8px;
+      margin-top: -30px;
   }
 
   .project p {
@@ -445,21 +482,26 @@
       color: var(--sage);
   }
 
-  .project .link {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 13px;
-      align-self: center;
-      white-space: nowrap;
-      border-bottom: 1px solid var(--ink);
-      padding-bottom: 2px;
-      transition: opacity .25s ease;
-  }
+.project .project-links {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    align-self: center;
+    white-space: nowrap;
+    display: flex;
+    gap: 20px;
+}
 
-  .project .link:hover {
-      opacity: 0.6;
-  }
+.project .project-links .link {
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 2px;
+    transition: opacity .25s ease;
+}
 
-  /* PRICING */
+.project .project-links .link:hover {
+    opacity: 0.6;
+}
+
+  /* services */
   .plans {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
